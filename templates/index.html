@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Fare Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Flight Fare Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="airline">Airline:</label>
+            <select id="airline" name="airline" required>
+                <option value="0">Air India</option>
+                <option value="1">IndiGo</option>
+                <option value="2">Jet Airways</option>
+                <option value="3">SpiceJet</option>
+                <!-- Add more airlines as needed -->
+            </select>
+
+            <label for="source">Source:</label>
+            <select id="source" name="source" required>
+                <option value="0">Delhi</option>
+                <option value="1">Kolkata</option>
+                <option value="2">Banglore</option>
+                <option value="3">Mumbai</option>
+                <!-- Add more sources as needed -->
+            </select>
+
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination" required>
+                <option value="0">Cochin</option>
+                <option value="1">New Delhi</option>
+                <option value="2">Hyderabad</option>
+                <!-- Add more destinations as needed -->
+            </select>
+
+            <label for="journey_date">Journey Date:</label>
+            <input type="date" id="journey_date" name="journey_date" required>
+
+            <label for="dep_time">Departure Time:</label>
+            <input type="time" id="dep_time" name="dep_time" required>
+
+            <label for="arrival_time">Arrival Time:</label>
+            <input type="time" id="arrival_time" name="arrival_time" required>
+
+            <label for="duration_hours">Duration (Hours):</label>
+            <input type="number" id="duration_hours" name="duration_hours" required>
+
+            <label for="duration_mins">Duration (Minutes):</label>
+            <input type="number" id="duration_mins" name="duration_mins" required>
+
+            <label for="total_stops">Total Stops:</label>
+            <select id="total_stops" name="total_stops" required>
+                <option value="0">Non-stop</option>
+                <option value="1">1 Stop</option>
+                <option value="2">2 Stops</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <label for="additional_info">Additional Info:</label>
+            <select id="additional_info" name="additional_info" required>
+                <option value="0">No Info</option>
+                <option value="1">In-flight meal not included</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <button type="submit">Predict Fare</button>
+        </form>
+
+        {% if prediction_text %}
+            <p class="result">{{ prediction_text }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
